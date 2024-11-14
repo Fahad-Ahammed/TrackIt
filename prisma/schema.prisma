@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum TodoStatus {
+  PENDING
+  COMPLETED
+}
+
+model User {
+  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  email    String    @unique
+  password String
+  projects Project[]
+}
+
+type Project {
+  title     String
+  createdAt DateTime @default(now())
+  todos     Todo[]
+}
+
+type Todo {
+  title       String
+  description String
+  status      TodoStatus @default(PENDING)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @default(now())
+}
