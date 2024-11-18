@@ -3,12 +3,13 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import prisma from "./lib/prisma";
 import bcrypt from "bcrypt";
+import { authConfig } from "./auth.config";
 
 // Configure NextAuth for authentication
 export const { auth, handlers, signIn, signOut } = NextAuth({
   // Use Prisma as an adapter to interact with the database
   adapter: PrismaAdapter(prisma),
-
+...authConfig,
   // Define authentication providers
   providers: [
     CredentialsProvider({
@@ -59,30 +60,4 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
       },
     }),
   ],
-
-  // Configure session settings
-  session: {
-    strategy: "jwt", // Use JWT for session management
-    maxAge: 3 * 24 * 60 * 60, // Set session max age to 3 days
-  },
-
-  // Define callbacks to customize token and session
-  callbacks: {
-    // Modify JWT token on sign-in
-    jwt({ token, user }) {
-      if (user) {
-        // Store user ID in token for future requests
-        token.id = user.id as string;
-      }
-      return token;
-    },
-    // Customize session returned to the client
-    session({ session, token }) {
-      if (session.user && token.id) {
-        // Include user ID in the session for client access
-        session.user.id = token.id as string;
-      }
-      return session;
-    },
-  },
 });
