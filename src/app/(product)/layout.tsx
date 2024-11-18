@@ -9,7 +9,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`mx-auto flex max-w-[1300px] ${mulish.className} bg-white antialiased`}
+        className={`mx-auto flex max-w-[1660px] ${mulish.className} bg-white antialiased`}
       >
         <SideBar />
         {children}
