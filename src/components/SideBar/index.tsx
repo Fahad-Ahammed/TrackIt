@@ -463,6 +463,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { FaChevronLeft } from "react-icons/fa";
+import { logout } from "@/actions/auth";
 
 // NavBar props types
 type NavBarProps = {
@@ -860,6 +861,9 @@ const NavBar: React.FC<NavBarProps> = ({ isOpen }) => {
             </ul>
           </div>
         </div>
+        <button onClick={()=>logout()}>
+        logout
+      </button>
       </nav>
     </>
   );

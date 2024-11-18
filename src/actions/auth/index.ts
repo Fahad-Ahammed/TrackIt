@@ -1,10 +1,11 @@
 "use server";
 
-import bcrypt from "bcrypt"; 
-import prisma from "@/lib/prisma"; 
-import { signIn } from "@/auth";
-import { AuthError } from "next-auth"; 
+import bcrypt from "bcrypt";
+import prisma from "@/lib/prisma";
+import { signIn, signOut } from "@/auth";
+import { AuthError } from "next-auth";
 import { SignUpFormData } from "@/types";
+import { revalidatePath } from "next/cache";
 
 // server action to handle user login with email and password
 export async function login(email: string, password: string) {
@@ -15,7 +16,7 @@ export async function login(email: string, password: string) {
       password,
       redirect: false,
     });
-    
+
     if (res?.error) {
       return { success: false, error: res.error || "Invalid credentials" };
     }
@@ -72,3 +73,8 @@ export async function signUp(data: SignUpFormData) {
     };
   }
 }
+
+export const logout = async () => {
+  await signOut({ redirectTo: "/sign-in" });
+  revalidatePath("/sign-in");
+};
