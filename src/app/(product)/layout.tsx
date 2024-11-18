@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
-import {mulish} from "@/fonts"
-
+import { mulish } from "@/fonts";
+import SideBar from "@/components/SideBar";
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -8,10 +8,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${mulish.className} bg-white antialiased`}>
-        <header>product header</header>
+      <body
+        className={`mx-auto flex max-w-[1300px] ${mulish.className} bg-white antialiased`}
+      >
+        <SideBar />
         {children}
-        <footer>product footer</footer>
       </body>
     </html>
   );
