@@ -49,7 +49,7 @@ export async function signUp(data: SignUpFormData) {
     const newUser = await prisma.user.create({
       data: {
         name: data.name,
-        email: data.email,
+        email: data.email.toLowerCase(),
         password: hashedPassword,
         projects: [], // Initialize with empty projects
       },

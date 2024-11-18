@@ -24,7 +24,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
           throw new Error("Missing email or password");
         }
 
-        const email = credentials.email as string;
+        const email = (credentials.email as string).toLowerCase();
         const password = credentials.password as string;
 
         try {
