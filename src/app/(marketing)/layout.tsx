@@ -1,13 +1,8 @@
 import type { Metadata } from "next";
-import { Mulish } from "next/font/google";
+import {mulish} from "@/fonts"
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import "../styles/globals.css";
-
-const mulish = Mulish({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-});
+import "@/styles/globals.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
