@@ -260,7 +260,7 @@ function InputField({
       />
       <label
         htmlFor={id}
-        className="pointer-events-none absolute left-[10px] top-[-8px] bg-[#f8f8f8] text-[14px] leading-[16px] text-black duration-200 ease-in-out peer-placeholder-shown:left-[15px] peer-placeholder-shown:top-[20px] peer-placeholder-shown:text-[14px] peer-focus:left-[10px] peer-focus:top-[-8px] peer-focus:text-[14px] peer-focus:leading-[16px] sm:peer-placeholder-shown:text-[16px] lg:bg-white"
+        className="pointer-events-none absolute left-[10px] top-[-8px] bg-[#f8f8f8] text-[14px] leading-[16px] text-black duration-200 ease-in-out peer-placeholder-shown:left-[15px] peer-placeholder-shown:top-[20px] peer-placeholder-shown:text-[14px] peer-focus:left-[10px] peer-focus:top-[-8px] peer-focus:text-[14px] peer-focus:leading-[16px] sm:text-[16px] sm:peer-placeholder-shown:text-[16px] sm:peer-focus:text-[16px] lg:bg-white"
       >
         {placeholder}
       </label>
