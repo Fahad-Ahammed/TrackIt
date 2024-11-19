@@ -1,27 +1,43 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { addProject } from "@/actions/dashboard/project";
 import InputField from "@/components/InputField";
 
 type AddProjectFormProps = {
-  userId: string; 
+  userId: string;
+  projectLength: number;
 };
 
-const AddProjectForm: React.FC<AddProjectFormProps> = ({ userId }) => {
+const AddProjectForm: React.FC<AddProjectFormProps> = ({
+  userId,
+  projectLength,
+}) => {
   const [title, setTitle] = useState("");
-
+  const formRef = useRef<HTMLFormElement>(null);
   // Handle the form submission
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault(); 
+    e.preventDefault();
     if (title.trim()) {
       await addProject(userId, title); // Add the new project using the provided action
       setTitle(""); // Clear the input field after adding the project
     }
   };
 
+  useEffect(() => {
+    // Check if there are no projects and the form reference is valid
+    // If so, find the input element within the form and focus it
+    if (projectLength === 0 && formRef.current) {
+      const inputElement = formRef.current.querySelector("input");
+      if (inputElement) {
+        inputElement.focus();
+      }
+    }
+  }, []);
+
   return (
     <form
+      ref={formRef}
       onSubmit={handleSubmit}
       className="flex w-full max-w-[400px] items-center gap-x-[10px]"
     >
@@ -30,7 +46,7 @@ const AddProjectForm: React.FC<AddProjectFormProps> = ({ userId }) => {
         name="project-title"
         id="project-title"
         type="text"
-        value={title} 
+        value={title}
         labelBg="bg-[#f8f8f8]"
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Create new project"

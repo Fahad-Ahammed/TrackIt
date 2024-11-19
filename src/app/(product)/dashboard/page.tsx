@@ -29,7 +29,7 @@ const Dashboard = async () => {
       </h1>
 
       {/* Form to add a new project */}
-      <AddProjectForm userId={userId} />
+      <AddProjectForm projectLength={projects.length} userId={userId} />
 
       {/* Grid layout to display all projects */}
       <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-5">
