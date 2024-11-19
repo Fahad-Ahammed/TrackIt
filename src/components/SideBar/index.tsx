@@ -34,7 +34,7 @@ const SideBar: React.FC = () => {
   return (
     <>
       <header
-        className={`absolute left-0 top-0 z-[20] h-[65px] w-full bg-white ${isOpen ? "border-b" : "max-md:overflow-hidden"} py-[15px] duration-[500ms] ease-in-out md:relative md:left-[unset] md:top-[unset] md:flex md:h-screen md:flex-col md:border-none md:pb-[8px] md:pt-[12px] ${isOpen ? "md:min-w-[230px] md:max-w-[230px] xl:min-w-[260px] xl:max-w-[260px]" : "md:min-w-[64px] md:max-w-[64px] xl:min-w-[72px] xl:max-w-[72px]"}`}
+        className={`absolute left-0 top-0 z-[20] h-[65px] w-full bg-white ${isOpen ? "border-b" : "max-md:overflow-hidden"} md:top-[unset py-[15px] duration-[500ms] ease-in-out md:sticky md:left-[unset] md:top-[0px] md:flex md:h-screen md:flex-col md:border-none md:pb-[8px] md:pt-[12px] ${isOpen ? "md:min-w-[230px] md:max-w-[230px] xl:min-w-[260px] xl:max-w-[260px]" : "md:min-w-[64px] md:max-w-[64px] xl:min-w-[72px] xl:max-w-[72px]"}`}
       >
         {/* Sidebar toggle button for larger screens */}
         <div
