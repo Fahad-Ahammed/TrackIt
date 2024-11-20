@@ -49,3 +49,28 @@ export async function deleteProject(
 
   revalidatePath("/dashboard"); // Refresh the dashboard to show the changes
 }
+
+// Update a project title
+export async function updateProjectTitle(
+  userId: string,
+  projectIndex: number,
+  newTitle: string,
+): Promise<void> {
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+    include: { projects: true },
+  });
+
+  if (!user || !user.projects[projectIndex]) {
+    throw new Error("Project not found");
+  }
+
+  user.projects[projectIndex].title = newTitle;
+
+  await prisma.user.update({
+    where: { id: userId },
+    data: { projects: user.projects },
+  });
+
+  revalidatePath(`/dashboard/project/${projectIndex}`);
+}
