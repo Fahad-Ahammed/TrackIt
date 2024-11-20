@@ -33,9 +33,9 @@ export async function login(email: string, password: string) {
 export async function signUp(data: SignUpFormData) {
   try {
     // Check if the user already exists by email
-    const existingUser = await prisma.user.findUnique({
+    const existingUser = await prisma?.user?.findUnique({
       where: {
-        email: data.email,
+        email: data.email.toLowerCase(),
       },
     });
 
