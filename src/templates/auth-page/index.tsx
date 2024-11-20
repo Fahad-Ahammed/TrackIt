@@ -8,6 +8,8 @@ import { SignInFormData, SignUpFormData, FormErrors } from "@/types";
 import { AiFillApple } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import InputField from "@/components/InputField";
+import Image from "next/image";
+import { FaApple, FaAmazon, FaMicrosoft, FaGoogle } from "react-icons/fa";
 
 type AuthMode = "signIn" | "signUp";
 
@@ -211,16 +213,35 @@ export default function AuthPage({ mode }: AuthPageProps) {
       </div>
 
       {/*  Displays product info for user overview */}
-      <div className="hidden rounded-[20px] bg-gradient-to-r from-[#9b4dff] via-[#6d50c4] to-[#5417D7] lg:flex lg:w-1/2">
-        <div className="flex flex-col items-center justify-center p-8 text-white">
-          <h2 className="mb-4 text-3xl font-bold">
-            The simplest way to manage your workforce
-          </h2>
-          <p className="mb-8 text-center">
-            Enter your credentials to access your account
-          </p>
-          <div className="relative h-[400px] w-full max-w-[500px] overflow-hidden rounded-lg"></div>
+      <div className="relative hidden overflow-hidden rounded-[20px] bg-gradient-to-r from-[#9b4dff] via-[#6d50c4] to-[#5417D7] p-8 lg:block lg:w-1/2">
+        {/* Title for the Section */}
+        <h2 className="text-3xl font-bold text-white">
+          The simplest way to manage your workforce
+        </h2>
+        <div className="relative mb-2 flex max-h-[475px] w-full items-center justify-center">
+          {/* Container for the Main Image */}
+          <div className="bg-ble-300 relative flex aspect-square w-[90%] max-w-[500px] items-center justify-center">
+            <Image
+              className="rounded-[20px] object-cover"
+              alt="dashboard image"
+              src="/product-dashboard.jpeg"
+              width={500}
+              height={500}
+              sizes="(max-width: 1024px) 90vw, 45vw"
+              priority
+            />
+          </div>
         </div>
+
+        {/* Icon Section  */}
+        <>
+          <div className="relative left-[-10px] flex items-center justify-evenly">
+            <FaApple className="h-10 w-10 text-white" />
+            <FaAmazon className="h-10 w-10 text-white" />
+            <FaMicrosoft className="h-10 w-10 text-white" />
+            <FaGoogle className="h-10 w-10 text-white" />
+          </div>
+        </>
       </div>
     </div>
   );

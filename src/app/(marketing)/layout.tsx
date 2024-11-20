@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import {mulish} from "@/fonts"
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
@@ -24,7 +23,7 @@ export default function RootLayout({
       <body className={`${mulish.className} bg-white antialiased`}>
         <Header />
         {children}
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );
