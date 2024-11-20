@@ -22,7 +22,7 @@ const Dashboard = async () => {
   const projects = response?.projects || []; //
 
   return (
-    <div className="mt-[65px] flex-grow bg-[#f8f8f8] p-6 md:mt-0 md:px-[50px]">
+    <div className="mt-[65px] min-h-screen flex-grow bg-[#f8f8f8] p-6 md:mt-0 md:px-[50px]">
       {/* Heading for the projects section */}
       <h1 className="mb-[25px] text-[32px] font-bold leading-[32px] md:mb-[50px]">
         Projects
