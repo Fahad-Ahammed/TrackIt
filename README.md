@@ -1,4 +1,4 @@
-# My Todo App
+# TrackIt
 
 Project url: https://track-it-flame-ten.vercel.app/
 
