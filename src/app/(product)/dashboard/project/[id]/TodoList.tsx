@@ -151,7 +151,7 @@ const TodoList: React.FC<TodoListProps> = ({
 
               {/* Delete button */}
               <button
-                onClick={() => handleRemove(index)}
+                onClick={() => handleRemove(todo.actualIndex)}
                 className="absolute right-[15px] top-[15px] text-gray-500 hover:text-red-700 disabled:opacity-50"
                 aria-label="Delete todo"
               >
